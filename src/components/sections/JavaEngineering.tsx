@@ -53,7 +53,7 @@ export function JavaEngineering() {
   return (
     <section id="java" className="py-24">
       <div className="mx-auto max-w-5xl px-4">
-        <SectionTitle title="Engenharia Java" />
+        <SectionTitle title="Projetos Java" />
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
           {JAVA_PROJECTS.map((project, index) => (
