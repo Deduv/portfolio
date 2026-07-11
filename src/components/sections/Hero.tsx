@@ -77,23 +77,33 @@ export function Hero() {
             className="mt-6 max-w-lg text-base leading-relaxed text-[#848a9a]"
           >
             Foco em engenharia de software, arquitetura de APIs e deploy em
-            produção. Construo produtos funcionais do zero.
+            produção.
           </motion.p>
 
           {/* Social links */}
-          <motion.div variants={itemVariants} className="mt-8 flex gap-4">
-            {socialLinks.map(({ href, icon: Icon, label }) => (
-              <a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={label}
-                className="rounded-lg border border-white/10 p-3 text-[#848a9a] transition hover:border-[#7c5cfc]/50 hover:bg-[#7c5cfc]/5 hover:text-[#f2f2f2]"
-              >
-                <Icon size={20} />
-              </a>
-            ))}
+          <motion.div variants={itemVariants} className="mt-8 flex flex-wrap items-center gap-4">
+            <div className="flex gap-4">
+              {socialLinks.map(({ href, icon: Icon, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="rounded-lg border border-white/10 p-3 text-[#848a9a] transition hover:border-[#7c5cfc]/50 hover:bg-[#7c5cfc]/5 hover:text-[#f2f2f2]"
+                >
+                  <Icon size={20} />
+                </a>
+              ))}
+            </div>
+            <a
+              href="/curriculo.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-lg border border-[#7c5cfc] px-5 py-3 text-sm font-medium text-[#7c5cfc] transition hover:bg-[#7c5cfc]/10"
+            >
+              Visualizar CV
+            </a>
           </motion.div>
         </motion.div>
 

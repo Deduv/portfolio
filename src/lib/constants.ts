@@ -21,13 +21,13 @@ export const NAV_ITEMS = [
 export const EDUCATION = [
   {
     title: "Engenharia de Software",
-    institution: "Universidade",
-    period: "2024 — 2028",
+    institution: "Universidade Salvador",
+    period: "2025 — 2029",
     status: "em andamento" as const,
   },
   {
     title: "Técnico em Mecânica Industrial",
-    institution: "IFBA",
+    institution: "Instituto Federal da Bahia",
     period: "Concluído",
     status: "concluido" as const,
   },
