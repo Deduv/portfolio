@@ -1,80 +1,42 @@
-'use client';
-
-import { GraduationCap, Wrench } from 'lucide-react';
-import SectionTitle from '@/components/ui/SectionTitle';
-import AnimateOnScroll from '@/components/ui/AnimateOnScroll';
-import TechBadge from '@/components/ui/TechBadge';
-import { EDUCATION } from '@/lib/constants';
-
-function getIcon(title: string) {
-  if (title.toLowerCase().includes('mecânica') || title.toLowerCase().includes('mec')) {
-    return Wrench;
-  }
-  return GraduationCap;
-}
+import { EDUCATION } from "@/lib/constants";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 
 export function Education() {
   return (
-    <section id="formacao" className="py-24">
-      <div className="mx-auto max-w-6xl px-6">
-        <SectionTitle title="Formação" />
-
-        {/* Timeline */}
-        <div className="relative mx-auto max-w-2xl">
-          {/* Vertical line */}
-          <div className="absolute left-2 top-0 h-full w-px bg-white/10 md:left-1/2 md:-translate-x-px" />
-
-          {EDUCATION.map((item, idx) => {
-            const Icon = getIcon(item.title);
-            const isLeft = idx % 2 === 0;
-
-            return (
-              <AnimateOnScroll
-                key={item.title}
-                delay={idx * 0.15}
-                className="relative mb-10 last:mb-0"
-              >
-                {/* Timeline node */}
-                <div
-                  className={`absolute top-6 left-0 z-10 h-4 w-4 rounded-full border-2 border-[#7c5cfc] bg-[#0d0f14] md:left-1/2 md:-translate-x-1/2`}
-                />
-
-                {/* Card */}
-                <div
-                  className={`ml-8 rounded-xl border border-white/5 bg-[#151821] p-5 md:ml-0 md:w-[calc(50%-2rem)] ${
-                    isLeft ? 'md:mr-auto md:pr-6' : 'md:ml-auto md:pl-6'
-                  }`}
-                >
-                  <div className="mb-3 flex items-center gap-3">
-                    <Icon size={18} className="text-[#7c5cfc]" />
-                    <h3 className="font-semibold text-[#f2f2f2]">
-                      {item.title}
-                    </h3>
-                  </div>
-
-                  {item.institution && (
-                    <p className="text-sm text-[#848a9a]">
-                      {item.institution}
-                    </p>
-                  )}
-
-                  <p className="mt-1 text-sm text-[#848a9a]">
-                    {item.period}
-                  </p>
-
-                  <div className="mt-3">
-                    {item.status === 'em andamento' ? (
-                      <TechBadge label="Em Andamento" variant="accent" />
-                    ) : (
-                      <TechBadge label="Concluído" variant="cyan" />
-                    )}
-                  </div>
-                </div>
-              </AnimateOnScroll>
-            );
-          })}
-        </div>
-      </div>
+    <section id="formacao" className="mx-auto max-w-6xl px-5 py-24">
+      <SectionHeader id="formacao" command="git log --oneline formacao" title="Formação" />
+      <ol className="max-w-3xl font-mono text-sm">
+        {EDUCATION.map((e, i) => {
+          const ongoing = e.status === "em andamento";
+          return (
+            <li key={e.title} className="relative grid grid-cols-[1.25rem_1fr] gap-4 pb-8 last:pb-0">
+              {i < EDUCATION.length - 1 && (
+                <span aria-hidden className="absolute left-[0.4rem] top-5 h-[calc(100%-0.5rem)] w-px bg-ink-600" />
+              )}
+              <span
+                aria-hidden
+                className={`mt-1 h-[0.875rem] w-[0.875rem] rounded-full border-2 ${
+                  ongoing ? "border-term-green bg-term-green/20" : "border-ink-600 bg-ink"
+                }`}
+              />
+              <div>
+                <p className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                  <span className="text-fg-dim">{e.period}</span>
+                  <span
+                    className={`rounded px-1.5 py-px text-[11px] ${
+                      ongoing ? "bg-term-green/10 text-term-green" : "bg-ink-800 text-fg-dim"
+                    }`}
+                  >
+                    {ongoing ? "HEAD → em andamento" : "concluído"}
+                  </span>
+                </p>
+                <p className="mt-2 font-sans text-lg font-medium text-fg">{e.title}</p>
+                <p className="font-sans text-fg-muted">{e.institution}</p>
+              </div>
+            </li>
+          );
+        })}
+      </ol>
     </section>
   );
 }
