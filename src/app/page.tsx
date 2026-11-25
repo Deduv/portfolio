@@ -1,9 +1,11 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { CommandPalette } from "@/components/ui/CommandPalette";
 import { Hero } from "@/components/sections/Hero";
+import { Projects } from "@/components/sections/Projects";
+import { Stack } from "@/components/sections/Stack";
 import { Education } from "@/components/sections/Education";
-import { SaasShowcase } from "@/components/sections/SaasShowcase";
-import { JavaEngineering } from "@/components/sections/JavaEngineering";
+import { Contact } from "@/components/sections/Contact";
 
 export default function Home() {
   return (
@@ -11,11 +13,13 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <Projects />
+        <Stack />
         <Education />
-        <SaasShowcase />
-        <JavaEngineering />
+        <Contact />
       </main>
       <Footer />
+      <CommandPalette />
     </>
   );
 }
